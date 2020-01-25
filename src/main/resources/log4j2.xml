@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [${hostName}] [%15.15t] %-25c{1}%5p : %m%n%ex
+        </Property>
+    </Properties>
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+
+        <!-- <File name="FileAppender" fileName="/logs/wb-web-project/app.log">
+             <PatternLayout pattern="${LOG_PATTERN}"/>
+         </File>-->
+
+        <RollingFile name="RollingFileAppender" filePattern="/efs/log/web/$${date:yyyy-MM-dd}/app-%d{HH}.log">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+            <!-- <DefaultRolloverStrategy max="10"/>-->
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!-- avoid duplicated logs with additivity=false -->
+        <Logger name="org.worldbuild" level="debug" additivity="false">
+            <!-- <AppenderRef ref="FileAppender" />-->
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="RollingFileAppender"/>
+        </Logger>
+        <Root level="info">
+            <!-- <AppenderRef ref="FileAppender" />-->
+            <AppenderRef ref="ConsoleAppender"/>
+            <AppenderRef ref="RollingFileAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

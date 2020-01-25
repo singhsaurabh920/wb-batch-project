@@ -1,0 +1,12 @@
+server:
+  port: 8075
+spring:
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: wb24
+      username: wb-mongo-admin
+      password: wb-mongo-admin
+      authentication-database: admin
+
