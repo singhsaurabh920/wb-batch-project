@@ -2,6 +2,7 @@ package org.worldbuild.batch.config;
 
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.SchedulingConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.scheduling.config.ScheduledTaskRegistrar;
@@ -9,7 +10,8 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 import java.util.concurrent.TimeUnit;
 
 @Log4j2
-//@Configuration
+@Configuration
+@Profile("schedule-script")
 public class SchedulerConfig implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {

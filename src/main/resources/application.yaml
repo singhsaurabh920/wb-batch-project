@@ -9,4 +9,12 @@ spring:
       username: wb-mongo-admin
       password: wb-mongo-admin
       authentication-database: admin
+  profiles:
+    active: file-batch-operation
+  batch:
+    job:
+      enabled: true
+    file-path:
+      input: file:/home/insight/wb/input-batch.csv
+      output: file:~/wb/output-batch.csv
 
