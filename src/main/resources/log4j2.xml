@@ -14,7 +14,7 @@
              <PatternLayout pattern="${LOG_PATTERN}"/>
          </File>-->
 
-        <RollingFile name="RollingFileAppender" filePattern="/efs/log/web/$${date:yyyy-MM-dd}/app-%d{HH}.log">
+        <RollingFile name="RollingFileAppender" filePattern="/efs/log/wb-batch-project/$${date:yyyy-MM-dd}/app-%d{HH}.log">
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <TimeBasedTriggeringPolicy/>
